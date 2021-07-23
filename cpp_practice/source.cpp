@@ -34,5 +34,7 @@ int main(void) {
 	character1->show();
 	character2.show();
 
+	delete character1;
+
 	return 0;
 }
