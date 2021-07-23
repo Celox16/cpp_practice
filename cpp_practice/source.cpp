@@ -3,6 +3,13 @@
 
 using namespace std;
 
+class Temp {
+public:
+	void showTemp() {
+		cout << "Temporary parent class\n";
+	}
+};
+
 class Person {
 private:
 	string name;
@@ -16,13 +23,11 @@ public:
 	}
 };
 
-class Student : Person {
+class Student : Person, public Temp {
 private:
 	int studentID;
-	// 맴버 변수 name은 Person으로부터 물려 받음.
 public:
 	Student(int studentID, string name) : Person(name) {
-		// 부모에 해당하는 Person생성자를 불러와 name을 넣음
 		this->studentID = studentID;
 	}
 	void show() {
@@ -37,6 +42,7 @@ public:
 int main(void) {
 	Student student(1, "박강민");
 	student.showName();
+	student.showTemp();
 
 	return 0;
 }
