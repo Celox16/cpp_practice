@@ -1,20 +1,16 @@
 #include <iostream>
-#include <map>
-
 using namespace std;
 
 int main(void) {
-	map<string, int> m;
-	m["박강민"] = 1; m["홍길동"] = 2; m["임꺽정"] = 3;
-	map<string, int>::iterator iter = m.begin();
-	for (; iter != m.end(); iter++) {
-		cout << iter->first << ":" << iter->second << endl;
+	int a = 7, b = 0;
+	try {
+		if (b == 0) {
+			throw "0으로 나눌 수 없습니다.";
+		}
+		cout << a / b << endl;
 	}
-	m["이순신"] = 4;
-	cout << m["없는 사람"] << endl;
-	iter = m.begin();
-	for (; iter != m.end(); iter++) {
-		cout << iter->first << ":" << iter->second << endl;
+	catch (const char* str) {
+		cout << str << endl;
 	}
 
 	return 0;
