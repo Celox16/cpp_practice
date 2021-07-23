@@ -27,11 +27,11 @@ public:
 };
 
 int main(void) {
-	Character character1("slime", 10, 20);
-	character1.pointUp();
-	Character character2(character1);
+	Character* character1 = new Character("slime", 10, 20);
+	character1->pointUp();
+	Character character2(*character1);
 	character2.pointUp();
-	character1.show();
+	character1->show();
 	character2.show();
 
 	return 0;
