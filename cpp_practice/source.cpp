@@ -1,23 +1,39 @@
 #include <iostream>
 #include <string>
+#include <ctime> // time이나 locatime함수 라이브러리
 
 using namespace std;
 
-class Person {
+class Time {
+	friend class Date; // Date 클래스에서 Time 클래스를 이용할 수 잇음
 private:
-	string name;
+	int hour, min, sec;
 public:
-	Person() { name = "홍길동"; }
-	Person(string name) :name(name) {}
-	Person operator+(const Person& other) { return Person(name + " & " + other.name); }
-	void showName() { cout << "이름 : " << name << '\n'; }
+	void setCurrentTime() {
+		time_t currentTime = time(NULL);
+		struct tm* p = localtime(&currentTime);
+		hour = p->tm_hour;
+		min = p->tm_min;
+		sec = p->tm_sec;
+	}
+};
+
+class Date {
+private:
+	int year, month, day;
+public:
+	Date(int year, int month, int day) : year(year), month(month), day(day) { }
+	void show(const Time& t) {
+		cout << "지정된 날짜 : " << year << "년" << month << "월" << day << "일" << '\n';
+		cout << "현재 시간 : " << t.hour << ":" << t.min << ":" << t.sec << '\n';
+	}
 };
 
 int main(void) {
-	Person person1;
-	Person person2("박강민");
-	Person result = person1 + person2;
-	result.showName();
-
+	Time time;
+	time.setCurrentTime();
+	Date date = Date(2020, 7, 23);
+	date.show(time);
+	
 	return 0;
 }
