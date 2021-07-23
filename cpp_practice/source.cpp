@@ -1,20 +1,24 @@
 #include <iostream>
-#include <vector>
+#include <set>
 
 using namespace std;
 
 int main(void) {
-	vector<int> v;
-	v.push_back(3); v.push_back(5); v.push_back(8);
-	vector<int>::iterator iter;
-	iter = v.begin();
-	v.insert(iter + 1, 3, 7);
-	for (int i = 0; i < v.size(); i++) {
-		cout << v[i] << ' ';
+	int array[5] = { 2, 4, 6, 8, 10 };
+	set<int> s(array, array + 5);
+	set<int>::iterator iter = s.begin();
+	for (; iter != s.end(); iter++) {
+		cout << *iter << ' ';
 	}
 	cout << endl;
-	v.clear();
-	cout << v.empty();
-	
+	s.insert(1);
+	s.insert(3);
+	s.insert(5);
+	iter = s.begin();
+	for (; iter != s.end(); iter++) {
+		cout << *iter << ' ';
+	}
+	cout << endl;
+
 	return 0;
 }
