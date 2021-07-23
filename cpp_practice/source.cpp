@@ -4,36 +4,23 @@
 
 using namespace std;
 
-class Time {
-	friend class Date; // Date 클래스에서 Time 클래스를 이용할 수 잇음
+class Person {
 private:
-	int hour, min, sec;
+	string name;
 public:
-	void setCurrentTime() {
-		time_t currentTime = time(NULL);
-		struct tm* p = localtime(&currentTime);
-		hour = p->tm_hour;
-		min = p->tm_min;
-		sec = p->tm_sec;
+	static int count;
+	Person(string name) : name(name) {
+		count++;
 	}
 };
 
-class Date {
-private:
-	int year, month, day;
-public:
-	Date(int year, int month, int day) : year(year), month(month), day(day) { }
-	void show(const Time& t) {
-		cout << "지정된 날짜 : " << year << "년" << month << "월" << day << "일" << '\n';
-		cout << "현재 시간 : " << t.hour << ":" << t.min << ":" << t.sec << '\n';
-	}
-};
+int Person::count = 0;
 
 int main(void) {
-	Time time;
-	time.setCurrentTime();
-	Date date = Date(2020, 7, 23);
-	date.show(time);
-	
+	Person p1("박강민");
+	Person p2("홍길동");
+	Person p3("임꺽정");
+	cout << "사람의 수 : " << Person::count << '\n';
+
 	return 0;
 }
