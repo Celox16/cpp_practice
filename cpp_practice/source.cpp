@@ -29,11 +29,14 @@ public:
 		cout << "학생 번호 : " << studentID << '\n';
 		cout << "학생 이름 : " << getName() << '\n';
 	}
+	void showName() {
+		cout << "학생 이름 : " << getName() << '\n';
+	}
 };
 
 int main(void) {
 	Student student(1, "박강민");
-	student.show();
+	student.showName();
 
 	return 0;
 }
