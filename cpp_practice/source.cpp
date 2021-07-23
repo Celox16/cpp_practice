@@ -11,9 +11,18 @@ void change(T& a, T& b) {
 	b = temp;
 }
 
+template<>
+void change<int>(int& a, int& b) {
+	cout << "integer data change.\n";
+	int temp;
+	temp = a;
+	a = b;
+	b = temp;
+}
+
 int main(void) {
-	string a = "¹Ú°­¹Î";
-	string b = "È«±æµ¿";
+	int a = 7;
+	int b = 5;
 	change(a, b);
 	cout << a << ":" << b << endl;
 
