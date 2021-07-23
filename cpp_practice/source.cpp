@@ -3,29 +3,21 @@
 
 using namespace std;
 
-class Temp {
-public:
-	void showTemp() {
-		cout << "Temporary parent class\n";
-	}
-};
-
 class Person {
 private:
 	string name;
 public:
 	Person() { name = "È«±æµ¿"; }
-	Person(string name) : name(name) { }
-	void showName() {
-		cout << "ÀÌ¸§ : " << name << '\n';
-	}
+	Person(string name) :name(name) {}
+	Person operator+(const Person& other) { return Person(name + " & " + other.name); }
+	void showName() { cout << "ÀÌ¸§ : " << name << '\n'; }
 };
 
 int main(void) {
 	Person person1;
-	person1.showName();
 	Person person2("¹Ú°­¹Î");
-	person2.showName();
+	Person result = person1 + person2;
+	result.showName();
 
 	return 0;
 }
