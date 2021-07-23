@@ -3,38 +3,37 @@
 
 using namespace std;
 
-class Character {
+class Person {
 private:
 	string name;
-	int ragePoint;
-	int hp;
-	int damage;
 public:
-	Character(string name, int hp, int damage) : name(name), ragePoint(0), hp(hp), damage(damage) {}
-	Character(const Character& other) {
-		name = other.name;
-		ragePoint = other.ragePoint;
-		hp = other.hp;
-		damage = other.damage;
+	Person(string name) : name(name) { }
+	string getName() {
+		return name;
 	}
+	void showName() {
+		cout << "이름 : " << getName() << '\n';
+	}
+};
 
-	void pointUp() {
-		ragePoint++;
+class Student : Person {
+private:
+	int studentID;
+	// 맴버 변수 name은 Person으로부터 물려 받음.
+public:
+	Student(int studentID, string name) : Person(name) {
+		// 부모에 해당하는 Person생성자를 불러와 name을 넣음
+		this->studentID = studentID;
 	}
 	void show() {
-		cout << name << "[" << ragePoint << "]" << hp << " " << damage << '\n';
+		cout << "학생 번호 : " << studentID << '\n';
+		cout << "학생 이름 : " << getName() << '\n';
 	}
 };
 
 int main(void) {
-	Character* character1 = new Character("slime", 10, 20);
-	character1->pointUp();
-	Character character2(*character1);
-	character2.pointUp();
-	character1->show();
-	character2.show();
-
-	delete character1;
+	Student student(1, "박강민");
+	student.show();
 
 	return 0;
 }
