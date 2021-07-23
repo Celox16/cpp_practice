@@ -1,22 +1,20 @@
 #include <iostream>
-#include <deque>
+#include <vector>
 
 using namespace std;
 
 int main(void) {
-	deque<int> d;
-	d.push_front(3); d.push_back(7); d.pop_front(); d.push_front(4);
-	for (int i = 0; i < d.size(); i++) { cout << d[i] << ' '; }
+	vector<int> v;
+	v.push_back(3); v.push_back(5); v.push_back(8);
+	vector<int>::iterator iter;
+	iter = v.begin();
+	v.insert(iter + 1, 3, 7);
+	for (int i = 0; i < v.size(); i++) {
+		cout << v[i] << ' ';
+	}
 	cout << endl;
-	deque<int>::iterator iter;
-	iter = d.begin();
-	d.insert(iter + 1, 3, 5);
-	iter = d.begin();
-	d.insert(iter + 1, 1, 9);
-	for (int i = 0; i < d.size(); i++) { cout << d[i] << ' '; }
-	cout << endl;
-	d.clear();
-	cout << d.empty() << endl;
-
+	v.clear();
+	cout << v.empty();
+	
 	return 0;
 }
