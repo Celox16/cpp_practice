@@ -4,11 +4,13 @@
 using namespace std;
 
 int main(void) {
-	queue<int> q;
-	q.push(7); q.push(5); q.push(4); q.pop(); q.push(6); q.pop();
-	while (!q.empty()) {
-		cout << q.front() << ' ';
-		q.pop();
+	int n, x;
+	cin >> n;
+	priority_queue<int> pq;
+	for (int i = 0; i < n; i++) { cin >> x; pq.push(x); }
+	while (!pq.empty()) {
+		cout << pq.top() << ' ';
+		pq.pop();
 	}
 
 	return 0;
